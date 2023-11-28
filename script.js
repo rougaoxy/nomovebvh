@@ -25,16 +25,12 @@ function processFile() {
     progressBar.max = lines.length;
 
     for (let i = 0; i < lines.length; i++) {
-        if (lines[i].startsWith('0') || lines[i].startsWith('-')) {
-            let parts = lines[i].split(' ');
-            if (parts.length > 3) {
-                parts[0] = '0'; // X軸を0に設定
-                // Y軸は変更しない
-                parts[2] = '0'; // Z軸を0に設定
-                processedData += parts.join(' ') + '\n';
-            } else {
-                processedData += lines[i] + '\n';
-            }
+        let parts = lines[i].split(' ');
+        if (parts.length > 3) {
+            parts[0] = '0'; // X軸を0に設定
+            // Y軸は変更しない
+            parts[2] = '0'; // Z軸を0に設定
+            processedData += parts.join(' ') + '\n';
         } else {
             processedData += lines[i] + '\n';
         }
